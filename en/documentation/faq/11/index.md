@@ -39,7 +39,8 @@ header: |
 
 ### What does `a ? b : c` mean?
 
-It's the same as saying `if a then b else c end`.
+This is the so-called “ternary operator” and is the same as saying
+`if a then b else c end`.
 
 ### How can I count the number of lines in a file?
 

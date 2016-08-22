@@ -37,14 +37,14 @@ header: |
 
 ## Built-in libraries
 
-### What does `instance_methods(nil)` return?
+### What does `instance_methods(false)` return?
 
-The method `instance_methods` returns an array containing the names of methods
-that the receiver responds to. This will include the methods in superclasses
-and in mixed in modules.
+The method `instance_methods` returns an array containing the names of
+instance methods in the receiving class or module. This will include
+the methods in superclasses and in mixed in modules.
 
-`instance_methods(nil)` returns the names of just those methods which are
-defined in the object's class.
+`instance_methods(false)` or `instance_methods(nil)` returns the names
+of just those methods which are defined in the receiver.
 
 ### How do random number seeds work?
 
@@ -289,12 +289,6 @@ array.sort {|a, b| (a.downcase <=> b.downcase).nonzero? || a <=> b }
   # => ["A", "a", "AA", "Aa", "aA", "aa", "BB", "Bb", "bB", "bb", "z"]
 ~~~
 
-### What does `"abcd"[0]` return?
-
-It returns the character code for “a”, 97 (`Fixnum`). You can express a
-character code as an integer constant by prefixing the character with a
-question mark, so `?a` is also 97 (`Fixnum`).
-
 ### How can I expand tabs to spaces?
 {: #tab-expansion}
 
@@ -335,7 +329,7 @@ Otherwise, `nil` is returned.
 
 Methods like `sub!`, which alter the attribute of the receiver,
 are called [destructive methods](../7/#destructive-method).
-If there are two similar methods and one is destructive,
+Usually, if there are two similar methods and one is destructive,
 the destructive one has a suffix `!`.
 
 ~~~

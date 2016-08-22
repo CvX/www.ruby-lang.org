@@ -151,8 +151,8 @@ def pos=(val)
 end
 ~~~
 
-Methods with `=` appended must be called with a receiver
-(without the receiver, you're just assigning to a local variable).
+Methods with `=` appended must be called with an explicit receiver
+(without the receiver, you are just assigning to a local variable).
 Invoke it as `self.pos = 1`.
 
 ### What is the difference between `'\1'` and `'\\1'`?

@@ -230,7 +230,7 @@ include Math
 sqrt(2)  # => 1.414213562
 ~~~
 
-Use `module_function` to make a method a module function.
+You can use `module_function` to make a method a module function.
 
 ~~~
 module Test

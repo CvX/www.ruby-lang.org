@@ -329,10 +329,10 @@ a singleton method of `Kernel`.
 
 A destructive method is one which alters the state of an object. `String`,
 `Array`, `Hash`, and others have such methods. Often there are two
-versions of a method, one with a plain name, the other with the same, but
-followed by `!`. The plain version takes a copy of the receiver, makes its
-change to it, and returns the copy. The version with the `!` modifies the
-receiver in place.
+versions of a method, one with a plain name, the other with the same name,
+but followed by `!`. The plain version creates a copy of the receiver, makes
+its change to it, and returns the copy. The “bang” version (with the `!`)
+modifies the receiver in place.
 
 Beware, however, that there are a fair number of destructive methods that
 do not have an `!`, including assignment methods (`name=`), array assignment
