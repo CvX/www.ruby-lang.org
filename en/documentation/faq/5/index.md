@@ -103,6 +103,8 @@ to the `Proc`.
 
 ### How is a block used in an iterator?
 
+{% include faq-out-of-date.html %}
+
 There are three ways to execute a block from an iterator method:
 (1) the `yield` control structure; (2) calling a `Proc` argument
 (made from a block) with `call`; and (3) using `Proc.new` followed by a call.
@@ -179,6 +181,8 @@ You can tell if there is a block associated with a method by calling
 
 ### What does `Proc.new` without a block do?
 
+{% include faq-out-of-date.html %}
+
 `Proc.new` without a block cannot generate a procedure object and an error
 occurs. In a method definition, however, `Proc.new` without a block implies
 the existence of a block at the time the method is called, and so no error
@@ -186,46 +190,45 @@ will occur.
 
 ### How can I run iterators in parallel?
 
-Matz's solution, in [ruby-talk:5252], uses threads:
+Here an adoption of a solution by Matz, in [ruby-talk:5252],
+that uses threads:
 
 ~~~
-require 'thread'
+require "thread"
 
-def combine(*args)
+def combine(*iterators)
   queues = []
   threads = []
-  for it in args
+
+  iterators.each do |it|
     queue = SizedQueue.new(1)
-    th = Thread.start(it, queue) do |i,q|
-      self.send(i) do |x|
-        q.push x
-      end
-    end
-    queues.push queue
-    threads.push th
+    th = Thread.new(it, queue) do |i, q|
+           send(i) {|x| q << x }
+         end
+    queues  << queue
+    threads << th
   end
+
   loop do
     ary = []
-    for q in queues
-      ary.push q.pop
-    end
+    queues.each {|q| ary << q.pop }
     yield ary
-    for th in threads
-      return unless th.status
+
+    iterators.size.times do |i|
+      return if !threads[i].status && queues[i].empty?
     end
   end
 end
-public :combine
 
-def it1 ()
+def it1
   yield 1; yield 2; yield 3
 end
 
-def it2 ()
+def it2
   yield 4; yield 5; yield 6
 end
 
-combine('it1','it2') do |x|
+combine(:it1, :it2) do |x|
   # x is [1, 4], then [2, 5], then [3, 6]
 end
 ~~~

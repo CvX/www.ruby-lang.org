@@ -72,6 +72,8 @@ This program does not return `98` as one might expect, but returns `"b"`.
 When the method `[]` is searched for, it is found in class `String`, before
 searching `Indexed`. You should directly redefine `[]` in class `String`.
 
+UPDATE
+
 ### Are `+`, `-`, `*`, ... operators?
 
 `+`, `-`, and the like are not operators but method calls.
@@ -145,6 +147,8 @@ Ruby is a pure object-oriented language.
 Of course you can use such methods as if they were functions.
 
 ### So where do all these function-like methods come from?
+
+{% include faq-out-of-date.html %}
 
 All classes in Ruby are derived from class `Object`. The definition of class
 `Object` mixes in the methods defined in the `Kernel` module. These methods

@@ -44,6 +44,8 @@ definition. If a method is redefined, the former one is overridden and lost.
 
 ### Are there class variables?
 
+{% include faq-out-of-date.html %}
+
 As of Ruby 1.5.3, there are. A variable prefixed with two at signs (`@`)
 is a class variable, accessible within both instance and class methods
 of the class.
@@ -212,6 +214,8 @@ foo.hello  # => "hello, I'm Tom"
 We've customized `foo` without changing the characteristics of `Foo`.
 
 ### What is a module function?
+
+{% include faq-out-of-date.html %}
 
 A module function is a private, singleton method defined in a module.
 In effect, it is similar to a [class method](#class-method),

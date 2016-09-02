@@ -40,6 +40,8 @@ header: |
 ### How can I use Ruby interactively?
 {: #irb}
 
+{% include faq-out-of-date.html %}
+
 You can try using `irb`. The following is paraphrased from Kentaro Goto
 (Gotoken), and originally appeared in [ruby-talk:444].
 
@@ -82,9 +84,10 @@ There are no problems with reference counting and variable types, and very
 few interfaces to learn. In fact, C code used to extend Ruby often ends up
 looking surprisingly like Ruby code itself.
 
-First, get the Ruby source distribution and read `README.EXT`. This is a
-good document, not only if you are writing an extension library, but also
-if you want to understand Ruby more deeply.
+First, get the Ruby source distribution and read `doc/extension.rdoc`
+(or read [extension.rdoc on docs.ruby-lang.org](http://docs.ruby-lang.org/en/trunk/extension_rdoc.html)).
+This is a good document, not only if you are writing an extension library,
+but also if you want to understand Ruby more deeply.
 
 Next, have a look at the source of the interpreter itself, and at the various
 supplied extensions in the `ext/` directory. You will also find good examples
